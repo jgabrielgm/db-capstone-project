@@ -1,0 +1,25 @@
+ALTER TABLE _bookings
+ADD CONSTRAINT fk_customerID
+FOREIGN KEY (customerID)
+REFERENCES _customer (customerID);
+
+select * from _bookings; 
+
+START TRANSACTION;
+
+INSERT INTO _customer
+VALUES 
+(1, "jOÃO", "JGABRIELGM1@GMAIL.COM"),
+(2, "GABRIEL", "BIELGM1@HOTMAIL.COM"),
+(3, "MATHEUS", "MATHEUS@GMAIL.COM");
+
+INSERT INTO _bookings
+VALUES 
+(1, "2022-10-10", 5, 1),
+(2,"2022-11-12",3,3),
+(3,"2022-10-11",2,2),
+(4,"2022-10-13",2,1);
+
+COMMIT;
+
+CREATE PROCEDURE CheckBooking AS
